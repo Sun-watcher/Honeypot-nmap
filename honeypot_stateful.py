@@ -199,10 +199,11 @@ def handle_packet(pkt):
                 del connections[key]
 
 if __name__ == "__main__":
-    print("[*] Honeypot leurre Nmap démarré...")
+    print("[*] Honeypot stateful démarré...")
 
     # Lancer thread de nettoyage des connexions
     cleaner_thread = threading.Thread(target=clean_connections, daemon=True)
     cleaner_thread.start()
 
     sniff(filter="tcp", prn=handle_packet, store=0, iface=INTERFACE)
+
